@@ -17,7 +17,27 @@
   <body>
     <div class="container">
       <div class="weather-app">
-        <a href="" class="btn btn-primary">Click me</a>
+        <form class="search-form">
+          <div class="row">
+            <form action="/submit">
+              <div class="col-9">
+                <input
+                  type="text"
+                  placeholder="Enter a city.."
+                  id="search-field"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="form-control btn btn-primary"
+                />
+              </div>
+            </form>
+          </div>
+        </form>
 
         <div>
           <h1>San Francisco</h1>
@@ -34,20 +54,71 @@
                 src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
                 alt="Cloudy"
               />
-              9°C | °F
+              <span class="main-temperature"> 9 </span>
+              °C | °F
             </div>
           </div>
-        </div>
+          <div class="row">
+            <div class="col-3">
+              <ul>
+                <li>
+                  <img
+                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+                    alt="partly cloudy icon"
+                  />
+                </li>
+                <li>-2°C</li>
+                <li>-8°C</li>
+              </ul>
+            </div>
+            <div class="col-3">
+              <ul>
+                <li>
+                  <img
+                    src="https://ssl.gstatic.com/onebox/weather/48/rain_light.png"
+                    alt="rain icon"
+                  />
+                </li>
+                <li>2°C</li>
+                <li>0°C</li>
+              </ul>
+            </div>
+            <div class="col-3">
+              <ul>
+                <li>
+                  <img
+                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+                    alt="partly cloudy icon"
+                  />
+                </li>
+                <li>4°C</li>
+                <li>3°C</li>
+              </ul>
+            </div>
+            <div class="col-3">
+              <ul>
+                <li>
+                  <img
+                    src="https://ssl.gstatic.com/onebox/weather/48/fog.png"
+                    alt="fog icon"
+                  />
+                </li>
 
-        <small>
-          <a
-            href="https://github.com/leuph/Vanilla-Weather-App"
-            target="_blank"
-          >
-            Open-source code
-          </a>
-          by Lena Uphoff
-        </small>
+                <li>0°C</li>
+                <li>-6°C</li>
+              </ul>
+            </div>
+          </div>
+          <small class="footer">
+            <a
+              href="https://github.com/leuph/Vanilla-Weather-App"
+              target="_blank"
+            >
+              Open-source code
+            </a>
+            by Lena Uphoff
+          </small>
+        </div>
       </div>
     </div>
 
