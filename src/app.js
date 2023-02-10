@@ -1,3 +1,5 @@
+let celsiusTemperature = null;
+
 function search(city) {
   let apiKey = "472f731f6bc31a7ff3af040te3ofbdf5";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
@@ -24,7 +26,8 @@ function formatDate(timestamp) {
 function displayTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#main-temperature");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  celsiusTemperature = response.data.temperature.current;
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.condition.description;
@@ -44,6 +47,26 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.time * 1000);
 }
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
 
+  let temperatureElement = document.querySelector("#main-temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+search("San Francisco");
