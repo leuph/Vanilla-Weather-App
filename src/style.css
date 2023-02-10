@@ -17,11 +17,12 @@ h1 {
   font-weight: 600;
   line-height: 34px;
   margin-bottom: 0;
+  margin-top: 30px;
 }
 
 ul {
   padding: 0;
-  margin: 0;
+  margin-bottom: 50px;
 }
 
 li {
@@ -34,11 +35,20 @@ li {
 }
 
 .main-temperature {
-  font-size: 80px;
+  font-size: 60px;
   font-weight: 600;
   line-height: 34px;
 }
 
 .search-form {
   margin-bottom: 30px;
+}
+
+small {
+  text-align: center;
+}
+
+hr {
+  background-color: rgb(207, 207, 207);
+  opacity: 15%;
 }
