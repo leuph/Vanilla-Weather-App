@@ -1,3 +1,17 @@
+function search(city) {
+  let apiKey = "472f731f6bc31a7ff3af040te3ofbdf5";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  console.log();
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#search-field");
+  search(cityInputElement.value);
+}
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -31,8 +45,5 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.time * 1000);
 }
 
-let apiKey = "472f731f6bc31a7ff3af040te3ofbdf5";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=New York&key=${apiKey}&units=metric`;
-
-console.log();
-axios.get(apiUrl).then(displayTemperature);
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
