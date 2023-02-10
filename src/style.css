@@ -35,8 +35,8 @@ li {
 }
 
 .main-temperature {
-  font-size: 60px;
-  font-weight: 600;
+  font-size: 80px;
+  font-weight: 400;
   line-height: 34px;
 }
 
@@ -51,4 +51,8 @@ small {
 hr {
   background-color: rgb(207, 207, 207);
   opacity: 15%;
+}
+
+#description {
+  text-transform: capitalize;
 }
