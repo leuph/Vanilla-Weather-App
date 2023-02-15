@@ -4,8 +4,14 @@ function search(city) {
   let apiKey = "472f731f6bc31a7ff3af040te3ofbdf5";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
-  console.log();
   axios.get(apiUrl).then(displayTemperature);
+}
+
+function getForecast(coordinates) {
+  let apiKey = "472f731f6bc31a7ff3af040te3ofbdf5";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
@@ -23,7 +29,8 @@ function formatDate(timestamp) {
   return `${days[day]} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -52,7 +59,6 @@ function displayForecast() {
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#main-temperature");
   celsiusTemperature = response.data.temperature.current;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
@@ -74,6 +80,8 @@ function displayTemperature(response) {
 
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+
+  getForecast(response.data.coordinates);
 }
 function displayCelsiusTemperature(event) {
   event.preventDefault();
@@ -98,5 +106,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("San Francisco");
-
-displayForecast();
